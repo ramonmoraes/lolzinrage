@@ -1,27 +1,18 @@
 window.onload = () => {
 
   const createOptions = (list) => {
-    for (var key in list) {
-      let template = document.getElementById('heroOption');
+    let template = document.getElementById('heroOption');
+    let heroList = document.getElementById('herolist')
+    heroList.innerHTML='';
+
+    for (var i = 0; i < list.length; i++) {
       let clone = template.content.cloneNode(true);
-      let name = clone.querySelectorAll("option");
-      clearTemplate(template,clone,name);
-      name[0].value=list[key].name;
-      template.parentNode.appendChild(clone)
+      let option = clone.querySelector("option");
+      option.value=list[i].name
+      heroList.appendChild(option);
     }
   }
 
-  const clearTemplate = (template, clone,name) => {
-    let x = template.parentNode;
-    console.log(x.querySelector("option"));
-
-  }
-
   const search = new TypeAhead (document.getElementById('search'),createOptions);
-
-
-
-
-
 
 }
