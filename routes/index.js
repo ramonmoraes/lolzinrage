@@ -21,7 +21,12 @@ router.get('/getHeroName/:startWith', function(req, res, next) {
     res.send(x)
   })
 });
-
+router.get('/hero/:name', function(req, res, next) {
+  riotApi.getHero(req.params.name)
+  .then((hero) => {
+    res.send(hero);
+  })
+});
 router.get('/adm/attApi/:key', function(req, res, next) {
   riotApi.atualizarText(req.params.key);
   res.render('index', { title: 'Express' });

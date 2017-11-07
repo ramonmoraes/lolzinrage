@@ -40,5 +40,6 @@ const addNewHero = (body) => {
 
 module.exports = {
   getHeroStartingWith:getHeroStartingWith,
-  addNewHero:addNewHero
+  addNewHero:addNewHero,
+  getHero:getHero
 }

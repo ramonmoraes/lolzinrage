@@ -4,7 +4,6 @@ window.onload = () => {
     let template = document.getElementById('heroOption');
     let heroList = document.getElementById('herolist')
 
-    // heroList.innerHTML='';
     let clone = template.content.cloneNode(true);
     let datalist=clone.querySelector("datalist");
 
@@ -23,11 +22,17 @@ window.onload = () => {
     if(heroList.children.length===0){
       heroList.appendChild(datalist.cloneNode(true))
     }else{
-      console.log('oi');
       heroList.replaceChild(datalist.cloneNode(true),heroList.childNodes[1])
     }
   }
 
   const search = new TypeAhead (document.getElementById('search'),createOptions);
 
+  fetch('/hero/Nasus',{method:"GET"})
+  .then((res) => {
+    res.json()
+    .then((info) => {
+      const card = new HeroCard(info);
+    })
+  })
 }

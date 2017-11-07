@@ -45,9 +45,17 @@ const getHeroStartingWith = (startWith) => {
     })
   });
 }
-
+const getHero = (name) => {
+return new Promise(function(resolve, reject) {
+  db.getHero(name)
+  .then((res) => {
+    resolve(res)
+  })
+});
+}
 module.exports = {
   atualizarText : atualizarText,
   getHeroAllMatters : getHeroAllMatters,
-  getHeroStartingWith : getHeroStartingWith
+  getHeroStartingWith : getHeroStartingWith,
+  getHero:getHero
 }

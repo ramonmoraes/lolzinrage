@@ -17,12 +17,12 @@ h1 {
   margin: auto;
 }
 .inputWrapper {
-  /*border: 1px solid red;*/
   display: flex;
   justify-content: center;
   position: relative;
   transition: 0.3s ease;
 }
+
 .inputWrapper input{
   border: none;
   padding: 10px;
@@ -35,9 +35,6 @@ h1 {
   outline-color: white;
 }
 
-.inputWrapper:focus {
-  top:-3px;
-}
 .inputWrapper:focus input {
   box-shadow: 0px 2px 3px -1px #444;
 }

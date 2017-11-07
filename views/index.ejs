@@ -4,6 +4,7 @@
   <title>Lolzin do rage</title>
   <meta name="viewport" content="width=device-width, inicial-scale=1.0" =="">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src='./javascripts/HeroCard.js'></script>
   <script type="text/javascript" src='./javascripts/TypeAhead.js'></script>
   <script type="text/javascript" src='./javascripts/script.js'></script>
   <script type="text/javascript" src="http://livejs.com/live.js"></script>
@@ -17,13 +18,29 @@
       <datalist id="herolist">
       </datalist>
     </input>
-      <template id="heroOption">
-        <datalist>
-          <option class='autoCompleteOption'>
-          </option>
-        </datalist>
+    <template id="heroOption">
+      <datalist>
+        <option class='autoCompleteOption' >
+        </option>
+      </datalist>
+    </template>
+  </div>
+
+  <section class='showCard'>
+
+
+      <template id="heroCard">
+        <div class="info">
+          <h1></h1>
+          <h3></h3>
+        </div>
+        <div class="comentarios">
+
+        </div>
       </template>
-    </div>
+
+</section>
+
   </div>
 
 
