@@ -13,6 +13,7 @@ window.onload = () => {
       let option = clone.querySelector("datalist option");
       clone = template.content.cloneNode(true);
       option.value=list[i].name;
+      option.innerHTML=list[i].title;
       datalist.appendChild(option);
     }
     renderOptions(datalist, heroList);
