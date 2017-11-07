@@ -23,7 +23,7 @@ h1 {
   position: relative;
   transition: 0.3s ease;
 }
-.inputWrapper input {
+.inputWrapper input{
   border: none;
   padding: 10px;
   background: #cbcbcb;
@@ -44,6 +44,7 @@ h1 {
 
 datalist,option{
   transition: 0.4s ease;
+  display: always;
 }
 
 .devmoraes {

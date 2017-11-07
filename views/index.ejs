@@ -6,7 +6,7 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script type="text/javascript" src='./javascripts/TypeAhead.js'></script>
   <script type="text/javascript" src='./javascripts/script.js'></script>
-  <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+  <script type="text/javascript" src="http://livejs.com/live.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
@@ -14,11 +14,15 @@
   <div class="content">
     <div class="inputWrapper">
       <input autofocus autocomplete="off" type="text" id='search' placeholder='Qual campeão sofrerá hoje?!' list='herolist' value=''>
-      <datalist id="herolist"></datalist>
-        <template id="heroOption">
-          <option>
+      <datalist id="herolist">
+      </datalist>
+    </input>
+      <template id="heroOption">
+        <datalist>
+          <option class='autoCompleteOption'>
           </option>
-        </template>
+        </datalist>
+      </template>
     </div>
   </div>
 
@@ -29,8 +33,8 @@
 
   <footer>
     <p><span class="copyright">aquele copyright</p>
-    <p><span class="devmoraes">desenvolvido por: <a target='blank' href="http://www.developermoraes.com">Developer Moraes</a></span></p>
-  </footer>
+      <p><span class="devmoraes">desenvolvido por: <a target='blank' href="http://www.developermoraes.com">Developer Moraes</a></span></p>
+    </footer>
 
-</body>
-</html>
+  </body>
+  </html>

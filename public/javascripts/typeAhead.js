@@ -5,7 +5,7 @@ class TypeAhead {
   constructor (input,func) {
     this.input = input;
     this.url = '/getHeroName/';
-    this.input.addEventListener("keyup",(ev) => {
+    this.input.addEventListener("input",(ev) => {
       this.searchBeginBy()
       .then((list) => {
         func(list)
