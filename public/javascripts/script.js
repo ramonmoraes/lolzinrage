@@ -28,11 +28,12 @@ window.onload = () => {
 
   const search = new TypeAhead (document.getElementById('search'),createOptions);
 
-  fetch('/hero/Nasus',{method:"GET"})
-  .then((res) => {
-    res.json()
-    .then((info) => {
-      const card = new HeroCard(info);
-    })
-  })
+  // fetch('/hero/Nasus',{method:"GET"})
+  // .then((res) => {
+  //   res.json()
+  //   .then((info) => {
+  //     const card = new HeroCard(info);
+  //     card.renderCard();
+  //   })
+  // })
 }
