@@ -51,6 +51,9 @@ return new Promise(function(resolve, reject) {
   .then((res) => {
     resolve(res)
   })
+  .catch((err) => {
+    reject(err)
+  })
 });
 }
 module.exports = {

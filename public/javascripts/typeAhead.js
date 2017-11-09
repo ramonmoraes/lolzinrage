@@ -2,13 +2,15 @@
 
 class TypeAhead {
 
-  constructor (input,func) {
+  constructor (input, funct, url) {
     this.input = input;
-    this.url = '/getHeroName/';
+    this.funct = funct;
+    this.url = url || '/getHeroName/';
     this.input.addEventListener("input",(ev) => {
       this.searchBeginBy()
       .then((list) => {
-        func(list)
+        this.createOptions(list);
+        this.funct(input.value);
       })
     })
   }
@@ -27,4 +29,28 @@ class TypeAhead {
     });
   }
 
+  createOptions(list) {
+    let template = document.getElementById('heroOption');
+    let heroList = document.getElementById('herolist');
+    let clone = template.content.cloneNode(true);
+    let datalist=clone.querySelector("datalist");
+
+    for (var i = 0; i < list.length; i++) {
+      let option = clone.querySelector("datalist option");
+      clone = template.content.cloneNode(true);
+      option.value=list[i].name;
+      option.innerHTML=list[i].title;
+      datalist.appendChild(option);
+    }
+
+    this.renderOptions(datalist, heroList);
+  }
+
+  renderOptions(datalist, heroList) {
+    if(heroList.children.length===0) {
+      heroList.appendChild(datalist.cloneNode(true))
+    }else {
+      heroList.replaceChild(datalist.cloneNode(true),heroList.childNodes[1])
+    }
+  }
 }
