@@ -28,7 +28,7 @@ router.get('/hero/:name', function(req, res, next) {
     res.send(hero);
   })
   .catch((err) => {
-    res.send(err)
+    res.send(false)
   })
 });
 router.get('/adm/attApi/:key', function(req, res, next) {

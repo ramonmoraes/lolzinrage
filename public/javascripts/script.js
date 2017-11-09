@@ -5,8 +5,10 @@ window.onload = () => {
     .then((res) => {
       res.json()
       .then((info) => {
-        const card = new HeroCard(info);
-        card.createCard();
+          if(info){
+          const card = new HeroCard(info);
+          card.createCard();
+        }
       })
     })
   }
