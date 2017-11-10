@@ -19,7 +19,7 @@ window.onload = () => {
     .then((res) => {
       res.json()
       .then((done) => {
-        console.log(done);
+        onComplete(heroName);
       })
     })
   }
@@ -29,10 +29,17 @@ window.onload = () => {
 
   const getCommentsAboutHero = (heroName,placeHolder) => {
     document.querySelector(".createPostContainer").style.visibility='visible';
-    // let comment = new Comments('ramon','olaqtal',placeHolder);
     fetch('/posts/'+heroName,{method:"GET"})
-    .then((listOfPosts) => {
-      console.log(listOfPosts);
+    .then((res) => {
+      res.json()
+      .then((listOfPosts) => {
+          for (var i = 0; i < listOfPosts.length; i++) {
+            name=listOfPosts[i].user;
+            text=listOfPosts[i].text
+            new Comments(name,text,placeHolder);
+          }
+
+      })
     })
   }
 
@@ -52,7 +59,7 @@ window.onload = () => {
     })
   }
 
-  onComplete("Fiora");
+  // onComplete("Fiora");
   const search = new TypeAhead (document.getElementById('search'),onComplete);
 
 }

@@ -38,29 +38,35 @@ h1 {
 .inputWrapper:focus input {
   box-shadow: 0px 2px 3px -1px #444;
 }
+.dinamicArea{
+  margin: 25px auto;
+}
+
 @media screen and (min-width:750px) {
   .dinamicArea{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
   }
 
 }
 .heroCard{
   background-color: black;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   min-width: 280px;
   max-width: 350px;
-  height: 500px;
-  margin: 25px auto;
+  min-height: 500px;
+  height: auto;
+  /*margin: 25px auto;*/
   border-radius: 10px;
 }
 .heroCard .info,
 .heroCard .comentarios{
+  padding: 25px 0;
   background-color: rgba(44,44,44,0.5);
 }
 .heroCard .info h1{
@@ -75,9 +81,11 @@ h1 {
 }
 .heroCard .info{
   border-radius: 10px 10px 0px 0;
+  min-height: 20%;
 }
 .heroCard .comentarios{
-  height: 100%;
+  min-height: 250px;
+  height: auto;
   border-radius:0px 0px  10px 10px;
 }
 .comentarioCard{
