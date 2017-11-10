@@ -1,22 +1,39 @@
 window.onload = () => {
-  let heroName=document.getElementById("heroName");
-  const newPostBtn = document.getElementById('newPostBtn');
 
   const createnewComment = () => {
     let newComment = document.querySelector(".newPost");
     let heroName = newComment.querySelectorAll("input")[0].value;
-    post = {
-      name:newComment.querySelectorAll("input")[1].value,
+
+    let post = {
+      user:newComment.querySelectorAll("input")[1].value,
       text:newComment.querySelector("textarea").value
     }
-    fetch('/post/'+heroName,{method:'POST'})
+
+    let options = {
+      method:"POST",
+      body:JSON.stringify(post),
+      headers: {'Content-Type':'application/json'}
+    }
+
+    fetch('/posts/'+heroName,options)
+    .then((res) => {
+      res.json()
+      .then((done) => {
+        console.log(done);
+      })
+    })
   }
 
+  const newPostBtn = document.getElementById('newPostBtn');
   newPostBtn.addEventListener('click', createnewComment);
 
-  const getCommentsOnHero = (heroName,placeHolder) => {
-    let comment = new Comments('ramon','olaqtal',placeHolder);
+  const getCommentsAboutHero = (heroName,placeHolder) => {
     document.querySelector(".createPostContainer").style.visibility='visible';
+    // let comment = new Comments('ramon','olaqtal',placeHolder);
+    fetch('/posts/'+heroName,{method:"GET"})
+    .then((listOfPosts) => {
+      console.log(listOfPosts);
+    })
   }
 
   const onComplete = (name) => {
@@ -29,7 +46,7 @@ window.onload = () => {
           card.createCard();
           heroName.value=info.name;
           const comentarioPlaceHolder = document.getElementById("comentarioContainer");
-          getCommentsOnHero(info.name,comentarioPlaceHolder);
+          getCommentsAboutHero(info.name,comentarioPlaceHolder);
         }
       })
     })

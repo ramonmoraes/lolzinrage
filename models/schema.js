@@ -20,7 +20,7 @@ var heroSchema = new Schema({
 });
 
 var postSchema = new Schema({
-  heroID:String, //
+  heroName:String, //
   text:String,
   user:String,
   likes:Number

@@ -24,7 +24,6 @@ router.get('/getHeroName/:startWith', function(req, res, next) {
 router.get('/hero/:name', function(req, res, next) {
   riotApi.getHero(req.params.name)
   .then((hero) => {
-    console.log(hero);
     res.send(hero);
   })
   .catch((err) => {
