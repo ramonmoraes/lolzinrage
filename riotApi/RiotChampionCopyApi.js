@@ -11,19 +11,22 @@ class RiotChampionCopyApi {
     this.imgSquareUrl = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"
     this.path = path || "./riotApi/";
     this.fileName= filename ||"championList.txt";
-    this.matters="myChampionListThatMatters.txt"
+    this.matters="myChampionListThatMatters.txt";
     this.length = this.objectLength() || 0;
     this.json;
   }
 
-  atualizarJson(file){
+  atualizarBancoDeDados(file){
     this.atualizarArquivoBase(file)
     .then(() => {
       this.lerArquivoBase()
-      .then((base) => {
-        this.adicionarImgUrls(base)
-        .then((baseComImgs) => {
-          this.salvarArquivoMatters(baseComImgs);
+      .then((arquivoBase) => {
+        this.adicionarImgUrls(arquivoBase)
+        .then((arquivoBaseComImgs) => {
+          this.salvarArquivoMatters(arquivoBaseComImgs)
+          .then((arquivoMatters) => {
+            this.salvarHeroesInMongo(arquivoMatters)
+          })
         })
       })
     })
@@ -32,8 +35,9 @@ class RiotChampionCopyApi {
   //CUIDADO
   atualizarArquivoBase (file) {
     return new Promise((resolve, reject)=> {
-      console.log(file);
-      fs.writeFile(this.path+this.fileName,cjson.stringify(file));
+      fs.writeFile(this.path+this.fileName,cjson.stringify(file),(err) => {
+        (err) ? console.log(err) : resolve (true);
+      });
     });
   }
 
@@ -45,29 +49,33 @@ class RiotChampionCopyApi {
     });
   }
 
-  adicionarImgUrls () {
+  adicionarImgUrls (arquivoString) {
     return new Promise( (resolve, reject)=> {
       let newJson;
-      this.lerArquivoBase()
-      .then( (res) => {
-        let championList = cjson.parse(res);
-        newJson=championList;
-        let count=0;
-        for (let key in championList) {
-          newJson[key].imgSquareUrl=this.imgSquareUrl+newJson[key].name+".png"
-          newJson[key].imgLoadingUrl=this.imgLoadingUrl+newJson[key].name+"_0.jpg"
-          count++;
-          if(count==this.objectLength(championList)){
-            resolve(newJson);
-          }
+      let championList = cjson.parse(arquivoString);
+      newJson=championList.data.data;
+      let count=0;
+      for (let key in newJson) {
+        let name = newJson[key].name;
+        name = name.split(" ").join("");
+        name = name.split("'").join("");
+        newJson[key].imgSquareUrl=this.imgSquareUrl+name+".png"
+        newJson[key].imgLoadingUrl=this.imgLoadingUrl+name+"_0.jpg"
+        count++;
+        if(count==this.objectLength(championList)){
+          resolve(newJson);
         }
-      });
+
+      }
     });
   }
 
   salvarArquivoMatters (arqv)  {
-    fs.writeFile(this.path+this.matters,cjson.stringify(arqv),(err,res) => {
-      console.log((err)? err : 'updated in : '+this.path+this.matters);
+    return new Promise((resolve, reject)=> {
+      fs.writeFile(this.path+this.matters,cjson.stringify(arqv),(err,res) => {
+        console.log((err)? err : 'updated in : '+this.path+this.matters);
+        resolve(arqv);
+      });
     });
   }
 
@@ -79,14 +87,27 @@ class RiotChampionCopyApi {
     });
   }
 
-  salvarHeroesInMongo (){
-    this.getAllHeros()
-    .then((list) => {
-      for (var key in list) {
-        heroDB.addNewHero(list[key]);
+  salvarHeroesInMongo (listOfHeros){
+      for (var key in listOfHeros) {
+        heroDB.addNewHero(listOfHeros[key]);
       }
-    })
   }
+  
+  atualizarBancoBaseadoNoMatters(){
+    return new Promise((resolve, reject)=> {
+      this.lerArquivoBase()
+      .then((arquivoBase) => {
+        this.adicionarImgUrls(arquivoBase)
+        .then((arquivoBaseComImgs) => {
+          this.salvarArquivoMatters(arquivoBaseComImgs)
+          .then((arquivoMatters) => {
+            this.salvarHeroesInMongo(arquivoMatters)
+          })
+        })
+      })
+    });
+  }
+
   objectLength ( object ) {
     let length = 0;
     for( let key in object ) {
@@ -97,11 +118,6 @@ class RiotChampionCopyApi {
     return length;
   }
 
-  teste(){
-    this.atualizarJson()
-  }
 }
-
-
 
 module.exports = RiotChampionCopyApi;

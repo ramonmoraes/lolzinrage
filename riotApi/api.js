@@ -4,7 +4,7 @@ const db = require("../models/heros")
 const baseUrl = "https://br1.api.riotgames.com";
 
 let riot = new RiotChampionCopyApi('championList.txt');
-
+// riot.atualizarBancoBaseadoNoMatters();
 // riot.salvarHeroesInMongo()
 
 const getHerosInfo = (key) => {
@@ -16,7 +16,8 @@ const getHerosInfo = (key) => {
       resolve(newFile);
     })
     .catch( (err) => {
-      console.log("error : "+ err.response.statusText);
+      console.log("\n error : "+ err.response.statusText+"\n");
+      console.log(err);
     });
   });
 }
@@ -24,7 +25,7 @@ const getHerosInfo = (key) => {
 const atualizarText = (key) => {
   getHerosInfo(key)
   .then((res) => {
-    riot.atualizarJson(res);
+    riot.atualizarBancoDeDados(res);
   });
 }
 
