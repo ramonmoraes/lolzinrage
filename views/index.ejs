@@ -4,15 +4,17 @@
   <title>Lolzin do rage</title>
   <meta name="viewport" content="width=device-width, inicial-scale=1.0" =="">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src='./javascripts/Comments.js'></script>
   <script type="text/javascript" src='./javascripts/HeroCard.js'></script>
   <script type="text/javascript" src='./javascripts/TypeAhead.js'></script>
   <script type="text/javascript" src='./javascripts/script.js'></script>
-  <!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+  <script type="text/javascript" src="http://livejs.com/live.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 <body>
   <h1>QUE O <span class='rage'>RAGE</span> COMEÇE</h1>
   <div class="content">
+
     <div class="inputWrapper">
       <input autofocus autocomplete="off" type="text" id='search' placeholder='Qual campeão sofrerá hoje?!' list='herolist' value=''>
       <datalist id="herolist">
@@ -26,36 +28,55 @@
     </template>
   </div>
 
+<div class="dinamicArea">
+
   <section>
     <div id='cardContainer'>
     </div>
 
     <template id="heroCard">
-      <div class="heroCard">
 
+      <div class="heroCard">
         <div class="info">
           <h1></h1>
           <h3></h3>
         </div>
-        <div class="comentarios">
+        <div class="comentarios" id='comentarioContainer'>
           <h1>Comentários</h1>
         </div>
       </div>
 
     </template>
-</section>
 
-  </div>
+    <template id="comentario">
+      <div class="comentarioCard">
+        <h1></h1>
+        <p></p>
+      </div>
+    </template>
+
+  </section>
+
+  <section>
+    <div class='createPostContainer'>
+      <div class="newPost">
+        <input type="hidden" name="hero" value="" id='heroName'>
+        <input autocomplete='off' type="text" name='name' placeholder="Seu nome" value=""/>
+        <textarea autocomplete='off' name="text" placeholder="Escreva o RAGE aqui" value=""></textarea>
+        <button id='newPostBtn'>Enviar <span class='rage'> RAGE</span></button>
+      </div>
+    </div>
+  </section>
+</div>
 
 
 
 
 
-
-  <footer>
-    <p><span class="copyright">aquele copyright</p>
-      <p><span class="devmoraes">desenvolvido por: <a target='blank' href="http://www.developermoraes.com">Developer Moraes</a></span></p>
-    </footer>
-
-  </body>
-  </html>
+</div>
+<footer>
+  <p><span class="copyright">aquele copyright</p>
+    <p><span class="devmoraes">desenvolvido por: <a target='blank' href="http://www.developermoraes.com">Developer Moraes</a></span></p>
+  </footer>
+</body>
+</html>

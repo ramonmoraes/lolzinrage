@@ -9,7 +9,6 @@ class HeroCard {
     this.title=info.title;
     this.imgSquareUrl=info.imgSquareUrl;
     this.imgLoadingUrl=info.imgLoadingUrl;
-    console.log(info);
   }
 
   url(link){
@@ -26,12 +25,8 @@ class HeroCard {
   }
   renderCard(container, card){
     if(container.children.length===0) {
-      container.appendChild(card)
-      console.log('add card');
+      container.appendChild(card);
     }else{
-      console.log('deveria trocar');
-      console.log(container.querySelector(".heroCard"));
-      // container.replaceChild(container.querySelector(".heroCard"),card);
       container.replaceChild(card,container.querySelector(".heroCard"));
 
     }

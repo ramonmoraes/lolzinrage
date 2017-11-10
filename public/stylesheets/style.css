@@ -38,13 +38,22 @@ h1 {
 .inputWrapper:focus input {
   box-shadow: 0px 2px 3px -1px #444;
 }
+@media screen and (min-width:750px) {
+  .dinamicArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
+}
 .heroCard{
   background-color: black;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
+  min-width: 280px;
   max-width: 350px;
   height: 500px;
   margin: 25px auto;
@@ -70,21 +79,95 @@ h1 {
 .heroCard .comentarios{
   height: 100%;
   border-radius:0px 0px  10px 10px;
-
 }
+.comentarioCard{
+  background-color: #dcdcdc;
+  max-width: 80%;
+  border-radius: 2px;
+  margin: auto;
+  box-shadow: 0 2px 3px 1px #111;
+  color: #111;
+  padding: 0 5px;
+}
+.comentarioCard h1{
+  font-size: 1.15em;
+}
+.comentarioCard h1,
+.comentarioCard p{
+  color: inherit!important;
+  text-align: left;
+}
+
+.comentarioCard h1::first-letter,
+.comentarioCard p::first-letter{
+  text-transform: capitalize;
+}
+
 .heroCard h1,h3{
   /*background-color: rgba(44,44,44,0.3);*/
   color: #fff;
 }
+.createPostContainer{
+  visibility: hidden;
+}
+.newPost{
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px 0;
+  min-width: 280px;
+  max-width: 350px;
+  margin: auto;
+  border-radius: 2px;
+  border: 2px solid #dcdcdc;
+}
+.newPost input,
+.newPost textarea,
+.newPost button{
+  outline-color: tomato;
+  border: none;
+  width: 90%;
+  margin: 5px auto;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.newPost textarea{
+  height: 100px;
+  resize: none;
+  font-family: inherit;
+}
+.newPost button{
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid white;
+  text-align: center;
+  color: #dcdcdc;
+  cursor: pointer;
+  font-size: 1.05em;
+  transition: 0.05s ease-out;
+  position: relative;
+  top: 0;
+}
+.newPost button:hover{
+  top: -3px;
+  color: tomato;
+  border-bottom: 1px solid tomato;
+
+}
+/* ------------------- */
 .devmoraes {
-  position: fixed;
   bottom: 5px;
   right:5px;
 }
 .copyright {
-    position: fixed;
-    bottom: 5px;
-    left: 5px;
+  bottom: 5px;
+  left: 5px;
+}
+footer{
+  height: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 footer span {

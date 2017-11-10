@@ -92,7 +92,7 @@ class RiotChampionCopyApi {
         heroDB.addNewHero(listOfHeros[key]);
       }
   }
-  
+
   atualizarBancoBaseadoNoMatters(){
     return new Promise((resolve, reject)=> {
       this.lerArquivoBase()
