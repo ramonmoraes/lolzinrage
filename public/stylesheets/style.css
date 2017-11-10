@@ -61,7 +61,7 @@ h1 {
   max-width: 350px;
   min-height: 500px;
   height: auto;
-  /*margin: 25px auto;*/
+  margin-bottom: 15px;
   border-radius: 10px;
 }
 .heroCard .info,
