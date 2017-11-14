@@ -14,6 +14,7 @@ h1 {
   padding: 15px;
   max-width: 800px;
   min-width: 280px;
+  min-height: 73vh;
   margin: auto;
 }
 .inputWrapper {
@@ -41,7 +42,12 @@ h1 {
 .dinamicArea{
   margin: 25px auto;
 }
-
+.cardContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (min-width:750px) {
   .dinamicArea{
     display: flex;
